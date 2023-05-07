@@ -19,4 +19,6 @@ public interface CerficationAPI {
     ResponseEntity<List<Certification>> findByEmployeeId(@Param("id") int id);
     @PostMapping("/certifications/id")
     ResponseEntity<Certification> createCertification(@RequestBody CertificationDTO certificationDTO);
+    @GetMapping("/certifications/airplaneid")
+    ResponseEntity<List<Certification>> findByAirplaneId(@Param("id") int id);
 }

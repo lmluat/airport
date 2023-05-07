@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface CertificationRepository extends JpaRepository<Certification, Long> {
     @Query("select c from Certification c where c = ?1")
-    List<Certification> findByEmployeeId(int id);
+    List<Certification> findByEmployee(int id);
+    List<Certification> findByAirplane(int id);
 }

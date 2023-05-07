@@ -28,18 +28,18 @@ public class CertificationService {
         Certification certification = new Certification();
 
         Employee employee = employeeRepository.findByEmployeeId(certificationDTO.getEmployeeId());
-
-        String model = String.valueOf(certificationDTO.getModel());
-
-        Airplane airplane = airplaneRepository.findByModel(model);
+        Airplane airplane = airplaneRepository.findByModel(certificationDTO.getModel());
 
         certification.setEmployee(employee);
         certification.setAirplane(airplane);
 
         return certificationRepository.save(certification);
     }
-    public List<Certification> getByEmployeeId(int id){
-        return certificationRepository.findByEmployeeId(id);
+    public List<Certification> getByEmployee(int id){
+        return certificationRepository.findByEmployee(id);
+    }
+    public List<Certification> getByAirplane(int id){
+        return certificationRepository.findByAirplane(id);
     }
 
 }

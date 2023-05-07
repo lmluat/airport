@@ -19,11 +19,16 @@ public class CertificationResource implements CerficationAPI {
 
     @Override
     public ResponseEntity<List<Certification>> findByEmployeeId(int id) {
-        return ResponseEntity.ok(certificationService.getByEmployeeId(id));
+        return ResponseEntity.ok(certificationService.getByEmployee(id));
     }
 
     @Override
     public ResponseEntity<Certification> createCertification(CertificationDTO certificationDTO) {
         return ResponseEntity.ok(certificationService.createCertification(certificationDTO));
+    }
+
+    @Override
+    public ResponseEntity<List<Certification>> findByAirplaneId(int id) {
+        return ResponseEntity.ok(certificationService.getByAirplane(id));
     }
 }
