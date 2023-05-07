@@ -20,10 +20,10 @@ public interface FlightAPI {
     @PostMapping("/flights/id")
     ResponseEntity<Flight> createFlight(@RequestBody FlightDTO flightDTO);
     @GetMapping("/flights/DepartureStation")
-    ResponseEntity<List<Flight>> getByDepartureStation(@Param("dpstation") String dpStation);
+    ResponseEntity<List<Flight>> getByDepartureStation(@Param("station") String dpStation);
     @GetMapping("/flights/Distance")
     ResponseEntity<List<Flight>> getByDistanceMoreThan(@Param("distance") int distance);
     @GetMapping("/flights/NumberOfFlight")
-    ResponseEntity<Integer> getNumOfFlight(@Param("dpstation") String dpStation);
+    ResponseEntity<Integer> getNumOfFlight(@Param("station") String dpStation);
 
 }

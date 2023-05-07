@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class CertificationDTO {
-    private Long airplaneId;
+    private Long model;
     private Long employeeId;
 }
