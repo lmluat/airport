@@ -65,4 +65,14 @@ public class CertificationResource implements CerficationAPI {
         return ResponseEntity.ok(certificationService.findAirplaneModelCertsOfEmployee(id));
     }
 
+    @Override
+    public ResponseEntity<List<String>> showEmployeeNotPilot() {
+        return ResponseEntity.ok(certificationService.showEmployeeNotPilot());
+    }
+
+    @Override
+    public ResponseEntity<List<Long>> showEmployee() {
+        return ResponseEntity.ok(certificationService.showEmployee());
+    }
+
 }

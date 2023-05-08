@@ -60,4 +60,10 @@ public class CertificationService {
     public List<Airplane> findAirplaneModelCertsOfEmployee(Long id){
         return certificationRepository.showAirplaneModelCertsOfEmployee(id);
     }
+    public List<String> showEmployeeNotPilot(){
+        return certificationRepository.showEmployeeNotPilot();
+    }
+    public List<Long> showEmployee(){
+        return certificationRepository.showEmployee();
+    }
 }

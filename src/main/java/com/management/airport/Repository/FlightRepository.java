@@ -9,10 +9,12 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface FlightRepository extends JpaRepository<Flight, Long> {
-    @Query(value = "select * from Flight where departure_station like ?1 ", nativeQuery = true)
-    List<Flight> likeDepartStation(String station);
-    @Query("select f from Flight f where f.distance > ?1")
-    List<Flight> findFlightByDistanceMoreThan(int distance);
-    @Query(value = "select count(id) from airport.Flight where departure_station like %:departStation%", nativeQuery = true)
-    int countFlight(@Param("departStation") String dpStation);
+    @Query("select f from Flight f where f.departureStation = ?1")
+    List<Flight> findByDepartureStation(String station);
+    @Query("select count(f.id) from Flight f where f.departureStation = ?1")
+    int countNumber(String station);
+    @Query(value = "select f2.flight_id from airport.Flight f2 where f2.distance = (select max(f.distance) from airport.Flight f)", nativeQuery = true)
+    String showFlightIdHasHighestDistance();
+    @Query(value = "select a.model from airport.Flight f, airport.Airplane a where a.range > f.distance and f.flight_id = ?1", nativeQuery = true)
+    List<String> showModel(String flightId);
 }

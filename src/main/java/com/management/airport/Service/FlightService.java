@@ -29,14 +29,17 @@ public class FlightService {
 
         return flightRepository.save(flight);
     }
-    public List<Flight> getByDepartureStation(String dpStation){
-        return flightRepository.likeDepartStation(dpStation);
+    public List<Flight> getByDepartureStation(String station){
+        return flightRepository.findByDepartureStation(station);
     }
-    public List<Flight> getByDistanceMoreThan(int distance){
-        return flightRepository.findFlightByDistanceMoreThan(distance);
+    public int countTotalNumberOfFlightsByDepartureStation(String station){
+        return flightRepository.countNumber(station);
     }
-    public int getNumOfFlight(String dpStation){
-        return flightRepository.countFlight(dpStation);
+    public String showFlightIdHasHighestDistance(){
+        return flightRepository.showFlightIdHasHighestDistance();
+    }
+    public List<String> showModel(String flightId){
+        return flightRepository.showModel(flightId);
     }
 
 }

@@ -37,4 +37,8 @@ public interface CerficationAPI {
     ResponseEntity<List<String>> showQuantity();
     @GetMapping("/certifications/findAirplaneModelCertsOfEmployee")
     ResponseEntity<List<Airplane>> findAirplaneModelCertsOfEmployee(@Param("id") Long id);
+    @GetMapping("/certifications/showEmployeeNotPilot")
+    ResponseEntity<List<String>> showEmployeeNotPilot();
+    @GetMapping("/certifications/showEmployee")
+    ResponseEntity<List<Long>> showEmployee();
 }

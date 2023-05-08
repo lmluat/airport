@@ -24,17 +24,23 @@ public class FlightResource implements FlightAPI{
     }
 
     @Override
-    public ResponseEntity<List<Flight>> getByDepartureStation(String dpStation) {
-        return ResponseEntity.ok(flightService.getByDepartureStation(dpStation));
+    public ResponseEntity<List<Flight>> getByDepartureStation(String station) {
+        return ResponseEntity.ok(flightService.getByDepartureStation(station));
     }
 
     @Override
-    public ResponseEntity<List<Flight>> getByDistanceMoreThan(int distance) {
-        return ResponseEntity.ok(flightService.getByDistanceMoreThan(distance));
+    public ResponseEntity<Integer> countTotalNumberOfFlightsByDepartureStation(String station) {
+        return ResponseEntity.ok(flightService.countTotalNumberOfFlightsByDepartureStation(station));
     }
 
     @Override
-    public ResponseEntity<Integer> getNumOfFlight(String dpStation) {
-        return ResponseEntity.ok(flightService.getNumOfFlight(dpStation));
+    public ResponseEntity<String> showFlightIdHasHighestDistance() {
+        return ResponseEntity.ok(flightService.showFlightIdHasHighestDistance());
     }
+
+    @Override
+    public ResponseEntity<List<String>> showModel(String flightId) {
+        return ResponseEntity.ok(flightService.showModel(flightId));
+    }
+
 }

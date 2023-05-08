@@ -26,4 +26,8 @@ public interface CertificationRepository extends JpaRepository<Certification, Lo
     List<String> showQuantity();
     @Query("select c.airplane from Certification c where c.employee.id = ?1")
     List<Airplane> showAirplaneModelCertsOfEmployee(Long id);
+    @Query(value = "select e.id, e.name, e.salary from airport.Employee e where e.id not in (select c.employee_id from airport.Certification c )", nativeQuery = true)
+    List<String> showEmployeeNotPilot();
+    @Query("select c.employee.id from Certification c join Employee e on e.id = c.employee.id group by c.employee.id, e.id having count(c.airplane.id) = 10")
+    List<Long> showEmployee();
 }

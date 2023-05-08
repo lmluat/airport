@@ -19,11 +19,12 @@ public interface FlightAPI {
     ResponseEntity<List<Flight>> getAllFlight();
     @PostMapping("/flights/id")
     ResponseEntity<Flight> createFlight(@RequestBody FlightDTO flightDTO);
-    @GetMapping("/flights/DepartureStation")
-    ResponseEntity<List<Flight>> getByDepartureStation(@Param("station") String dpStation);
-    @GetMapping("/flights/Distance")
-    ResponseEntity<List<Flight>> getByDistanceMoreThan(@Param("distance") int distance);
-    @GetMapping("/flights/NumberOfFlight")
-    ResponseEntity<Integer> getNumOfFlight(@Param("station") String dpStation);
-
+    @GetMapping("/flights/departureStation")
+    ResponseEntity<List<Flight>> getByDepartureStation(@Param("station") String station);
+    @GetMapping("/flights/count/departurestation")
+    ResponseEntity<Integer> countTotalNumberOfFlightsByDepartureStation(@Param("station") String station);
+    @GetMapping("/flights/distance/highest")
+    ResponseEntity<String> showFlightIdHasHighestDistance();
+    @GetMapping("/flights/distance/model")
+    ResponseEntity<List<String>> showModel(@Param("flightid") String fligthId);
 }
