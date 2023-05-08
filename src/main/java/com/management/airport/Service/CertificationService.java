@@ -1,6 +1,7 @@
 package com.management.airport.Service;
 
 import com.management.airport.DTO.CertificationDTO;
+import com.management.airport.DTO.EmployeeDTO;
 import com.management.airport.Entity.Airplane;
 import com.management.airport.Entity.Certification;
 import com.management.airport.Entity.Employee;
@@ -35,11 +36,28 @@ public class CertificationService {
 
         return certificationRepository.save(certification);
     }
-    public List<Certification> getByEmployee(int id){
-        return certificationRepository.findByEmployee(id);
+    public List<Certification> getByAirplaneId(Long id){
+        return certificationRepository.findByAirplaneId(id);
     }
-    public List<Certification> getByAirplane(int id){
-        return certificationRepository.findByAirplane(id);
+    public List<Certification> getByEmployeeId(Long id){
+        return certificationRepository.findByEmployeeId(id);
     }
-
+    public List<Certification> getCertificationsByEmployeeId(Long id){
+        return certificationRepository.findCertificationsByEmployeeId(id);
+    }
+    public int countNumberOfCertifications(Long id){
+        return certificationRepository.countNumberOfCertifications(id);
+    }
+    public int countCertificationsByAirplaneId(Long id){
+        return certificationRepository.countCertificationsByAirplaneId(id);
+    }
+    public List<String> showInformation(Long id){
+        return certificationRepository.showInformation(id);
+    }
+    public List<String> showQuantity(){
+        return certificationRepository.showQuantity();
+    }
+    public List<Airplane> findAirplaneModelCertsOfEmployee(Long id){
+        return certificationRepository.showAirplaneModelCertsOfEmployee(id);
+    }
 }
