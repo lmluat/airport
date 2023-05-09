@@ -15,7 +15,7 @@ import java.util.Optional;
 public class EmployeeResource implements EmployeeAPI {
     private final EmployeeService employeeService;
     @Override
-    public ResponseEntity<List<Employee>> getAllEmployee() {
+    public ResponseEntity<List<EmployeeDTO>> getAllEmployee() {
         return ResponseEntity.ok(employeeService.getAllEmployee());
     }
 
@@ -40,12 +40,12 @@ public class EmployeeResource implements EmployeeAPI {
     }
 
     @Override
-    public ResponseEntity<List<Employee>> getEmployeeByNameAndSalary(String name, String salary) {
+    public ResponseEntity<List<EmployeeDTO>> getEmployeeByNameAndSalary(String name, String salary) {
         return ResponseEntity.ok(employeeService.getEmployeesByNameAndSalary(name,salary));
     }
 
     @Override
-    public ResponseEntity<List<Employee>> getEmployeeByName(String name) {
+    public ResponseEntity<List<EmployeeDTO>> getEmployeeByName(String name) {
         return ResponseEntity.ok(employeeService.getByName(name));
     }
 
@@ -53,4 +53,10 @@ public class EmployeeResource implements EmployeeAPI {
     public ResponseEntity<List<Employee>> getByName(String name) {
         return ResponseEntity.ok(employeeService.getEmployeeByName(name));
     }
+
+    @Override
+    public ResponseEntity<List<EmployeeDTO>> showList() {
+        return ResponseEntity.ok(employeeService.showList());
+    }
+
 }

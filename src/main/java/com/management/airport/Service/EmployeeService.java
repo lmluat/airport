@@ -3,6 +3,7 @@ package com.management.airport.Service;
 import com.management.airport.DTO.EmployeeDTO;
 import com.management.airport.Entity.Employee;
 import com.management.airport.Repository.EmployeeRepository;
+import com.management.airport.Service.mapper.EmployeeMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -12,8 +13,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
-    public List<Employee> getAllEmployee(){
-        return employeeRepository.findAll();
+    public List<EmployeeDTO> getAllEmployee(){
+        return EmployeeMapper.INSTANCE.toDtos(employeeRepository.findAll());
     }
     public Employee createEmployee(EmployeeDTO employeeDTO){
         Employee employee = new Employee();
@@ -33,14 +34,14 @@ public class EmployeeService {
     public List<Employee> getByNameAndSalary(String name, String salary){
         return employeeRepository.findByNameAndSalary(name, salary);
     }
-    public List<Employee> getEmployeesByNameAndSalary(String name, String salary) {
+    public List<EmployeeDTO> getEmployeesByNameAndSalary(String name, String salary) {
         return employeeRepository.findEmployeeByNameAndSalary(name, salary);
     }
-    public List<Employee> getByName(String name) {
+    public List<EmployeeDTO> getByName(String name) {
         return employeeRepository.findByName(name);
     }
     public List<Employee> getEmployeeByName(String name) {
         return employeeRepository.findEmployeeByName(name);
     }
-
+    public List<EmployeeDTO> showList(){return employeeRepository.showList();}
 }

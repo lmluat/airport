@@ -3,6 +3,7 @@ package com.management.airport.Service;
 import com.management.airport.DTO.AirplaneDTO;
 import com.management.airport.Entity.Airplane;
 import com.management.airport.Repository.AirplaneRepository;
+import com.management.airport.Service.mapper.AirplaneMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -11,8 +12,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AirplaneService {
     private final AirplaneRepository airplaneRepository;
-    public List<Airplane> getAllAirplane(){
-        return airplaneRepository.findAll();
+    public List<AirplaneDTO> getAllAirplane(){
+        return AirplaneMapper.INSTANCE.toDtos(airplaneRepository.findAll());
     }
     public Airplane createAirplane(AirplaneDTO airplaneDTO){
         Airplane airplane = new Airplane();

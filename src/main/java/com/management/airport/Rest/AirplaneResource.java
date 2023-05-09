@@ -13,7 +13,7 @@ import java.util.List;
 public class AirplaneResource implements AirplaneAPI{
     private final AirplaneService airplaneService;
     @Override
-    public ResponseEntity<List<Airplane>> getAllAirplane() {
+    public ResponseEntity<List<AirplaneDTO>> getAllAirplane() {
         return ResponseEntity.ok(airplaneService.getAllAirplane());
     }
 

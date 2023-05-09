@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping(value = "/api")
 public interface CerficationAPI {
     @GetMapping("/certifications")
-    ResponseEntity<List<Certification>> getAllCertification();
+    ResponseEntity<List<CertificationDTO>> getAllCertification();
     @PostMapping("/certifications/id")
     ResponseEntity<Certification> createCertification(@RequestBody CertificationDTO certificationDTO);
     @GetMapping("/certifications/airplaneId")
@@ -26,7 +26,7 @@ public interface CerficationAPI {
     @GetMapping("/certifications/employeeId")
     ResponseEntity<List<Certification>> getByEmployeeId(@Param("id") Long id);
     @GetMapping("/certifications/employeeID")
-    ResponseEntity<List<Certification>> getCertificationsByEmployeeId(@Param("id") Long id);
+    ResponseEntity<List<CertificationDTO>> getCertificationsByEmployeeId(@Param("id") Long id);
     @GetMapping("/certifications/countbyemployeeid")
     ResponseEntity<Integer> countNumberOfCertifications(@Param("id") Long id);
     @GetMapping("/certifications/countbyairplaneid")
@@ -39,6 +39,4 @@ public interface CerficationAPI {
     ResponseEntity<List<Airplane>> findAirplaneModelCertsOfEmployee(@Param("id") Long id);
     @GetMapping("/certifications/showEmployeeNotPilot")
     ResponseEntity<List<String>> showEmployeeNotPilot();
-    @GetMapping("/certifications/showEmployee")
-    ResponseEntity<List<Long>> showEmployee();
 }

@@ -13,4 +13,5 @@ import lombok.NoArgsConstructor;
 public class CertificationDTO {
     private String model;
     private Long employeeId;
+    private Employee employee;
 }

@@ -17,7 +17,7 @@ import java.util.List;
 public class CertificationResource implements CerficationAPI {
     private final CertificationService certificationService;
     @Override
-    public ResponseEntity<List<Certification>> getAllCertification() {
+    public ResponseEntity<List<CertificationDTO>> getAllCertification() {
         return ResponseEntity.ok(certificationService.getAllCertification());
     }
     @Override
@@ -36,7 +36,7 @@ public class CertificationResource implements CerficationAPI {
     }
 
     @Override
-    public ResponseEntity<List<Certification>> getCertificationsByEmployeeId(Long id) {
+    public ResponseEntity<List<CertificationDTO>> getCertificationsByEmployeeId(Long id) {
         return ResponseEntity.ok(certificationService.getCertificationsByEmployeeId(id));
     }
 
@@ -70,9 +70,6 @@ public class CertificationResource implements CerficationAPI {
         return ResponseEntity.ok(certificationService.showEmployeeNotPilot());
     }
 
-    @Override
-    public ResponseEntity<List<Long>> showEmployee() {
-        return ResponseEntity.ok(certificationService.showEmployee());
-    }
+
 
 }

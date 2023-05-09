@@ -3,7 +3,8 @@ package com.management.airport.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -23,4 +24,6 @@ public class Employee {
     private String name;
     @Column(name = "salary", nullable = false)
     private String salary;
+    @Transient
+    private Long listCertifications;
 }

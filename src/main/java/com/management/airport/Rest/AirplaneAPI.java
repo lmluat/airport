@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping(value = "/api")
 public interface AirplaneAPI {
     @GetMapping("/airplanes")
-    ResponseEntity<List<Airplane>> getAllAirplane();
+    ResponseEntity<List<AirplaneDTO>> getAllAirplane();
     @PostMapping("/airplanes/id")
     ResponseEntity<Airplane> createAirplane(@RequestBody AirplaneDTO airplaneDTO);
     @GetMapping("/airplanes/model")

@@ -8,7 +8,9 @@ import com.management.airport.Entity.Employee;
 import com.management.airport.Repository.AirplaneRepository;
 import com.management.airport.Repository.CertificationRepository;
 import com.management.airport.Repository.EmployeeRepository;
+import com.management.airport.Service.mapper.CertificationMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.management.airport.Entity.Flight;
@@ -18,12 +20,14 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+//@Slf4j
 public class CertificationService {
     private final CertificationRepository certificationRepository;
     private final EmployeeRepository employeeRepository;
     private final AirplaneRepository airplaneRepository;
-    public List<Certification> getAllCertification(){
-      return certificationRepository.findAll();
+    private final CertificationMapper certificationMapper;
+    public List<CertificationDTO> getAllCertification(){
+      return certificationMapper.toDtos(certificationRepository.findAll());
     }
     public Certification createCertification(CertificationDTO certificationDTO){
         Certification certification = new Certification();
@@ -42,7 +46,7 @@ public class CertificationService {
     public List<Certification> getByEmployeeId(Long id){
         return certificationRepository.findByEmployeeId(id);
     }
-    public List<Certification> getCertificationsByEmployeeId(Long id){
+    public List<CertificationDTO> getCertificationsByEmployeeId(Long id){
         return certificationRepository.findCertificationsByEmployeeId(id);
     }
     public int countNumberOfCertifications(Long id){
@@ -62,8 +66,5 @@ public class CertificationService {
     }
     public List<String> showEmployeeNotPilot(){
         return certificationRepository.showEmployeeNotPilot();
-    }
-    public List<Long> showEmployee(){
-        return certificationRepository.showEmployee();
     }
 }

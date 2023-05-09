@@ -1,5 +1,6 @@
 package com.management.airport.Repository;
 
+import com.management.airport.DTO.CertificationDTO;
 import com.management.airport.DTO.EmployeeDTO;
 import com.management.airport.Entity.Airplane;
 import com.management.airport.Entity.Certification;
@@ -15,7 +16,7 @@ public interface CertificationRepository extends JpaRepository<Certification, Lo
     List<Certification> findByAirplaneId(Long id);
     List<Certification> findByEmployeeId(Long id);
     @Query("select c from Certification c where c.employee.id = ?1")
-    List<Certification> findCertificationsByEmployeeId(Long id);
+    List<CertificationDTO> findCertificationsByEmployeeId(Long id);
     @Query(value = "select count(id) from airport.Certification where employee_id = ?1", nativeQuery = true)
     int countNumberOfCertifications(Long id);
     @Query(value = "select count(id) from airport.Certification where airplane_id = :airplaneId", nativeQuery = true)
@@ -28,6 +29,4 @@ public interface CertificationRepository extends JpaRepository<Certification, Lo
     List<Airplane> showAirplaneModelCertsOfEmployee(Long id);
     @Query(value = "select e.id, e.name, e.salary from airport.Employee e where e.id not in (select c.employee_id from airport.Certification c )", nativeQuery = true)
     List<String> showEmployeeNotPilot();
-    @Query("select c.employee.id from Certification c join Employee e on e.id = c.employee.id group by c.employee.id, e.id having count(c.airplane.id) = 10")
-    List<Long> showEmployee();
 }

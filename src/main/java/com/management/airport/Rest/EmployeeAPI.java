@@ -13,7 +13,7 @@ import java.util.Optional;
 @RequestMapping(value = "/api")
 public interface EmployeeAPI {
 @GetMapping("/employees")
-    ResponseEntity<List<Employee>> getAllEmployee();
+    ResponseEntity<List<EmployeeDTO>> getAllEmployee();
 @PostMapping("/employees/id")
     ResponseEntity<Employee> createEmployee(@RequestBody EmployeeDTO employeeDTO);
 @GetMapping("/employeeID")
@@ -24,10 +24,12 @@ ResponseEntity<Employee> getByEmployeeId(@Param("id") Long id);
     ResponseEntity<List<Employee>> getByNameAndSalary(@Param("name") String name,
                                                       @Param("salary") String salary);
 @GetMapping("/employeeNameAndSalary")
-    ResponseEntity<List<Employee>> getEmployeeByNameAndSalary(@Param("name") String name,
+    ResponseEntity<List<EmployeeDTO>> getEmployeeByNameAndSalary(@Param("name") String name,
                                                       @Param("salary") String salary);
 @GetMapping("/employeeName")
-    ResponseEntity<List<Employee>> getEmployeeByName(@Param("name") String name);
+    ResponseEntity<List<EmployeeDTO>> getEmployeeByName(@Param("name") String name);
 @GetMapping("/employee/Name")
     ResponseEntity<List<Employee>> getByName(@Param("name") String name);
+@GetMapping("/employee/show")
+    ResponseEntity<List<EmployeeDTO>> showList();
 }
