@@ -1,6 +1,8 @@
 package com.management.airport.Rest;
 
+import com.management.airport.DTO.AirplaneDTO;
 import com.management.airport.DTO.FlightDTO;
+import com.management.airport.Entity.Airplane;
 import com.management.airport.Entity.Flight;
 import com.management.airport.Service.FlightService;
 import lombok.RequiredArgsConstructor;
@@ -38,9 +40,5 @@ public class FlightResource implements FlightAPI{
         return ResponseEntity.ok(flightService.showFlightIdHasHighestDistance());
     }
 
-    @Override
-    public ResponseEntity<List<String>> showModel(String flightId) {
-        return ResponseEntity.ok(flightService.showModel(flightId));
-    }
 
 }

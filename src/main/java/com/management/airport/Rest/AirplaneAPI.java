@@ -27,4 +27,6 @@ public interface AirplaneAPI {
     ResponseEntity<Integer> countAirplane(@Param("model") String model);
     @GetMapping("/airplane")
     ResponseEntity<Airplane> getAirplaneByModel(@Param("model") String model);
+    @GetMapping("/airplanes/distance/model")
+    ResponseEntity<List<AirplaneDTO>> showModel(@Param("flightid") String fligthId);
 }

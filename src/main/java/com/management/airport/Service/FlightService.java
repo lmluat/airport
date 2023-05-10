@@ -1,6 +1,8 @@
 package com.management.airport.Service;
 
+import com.management.airport.DTO.AirplaneDTO;
 import com.management.airport.DTO.FlightDTO;
+import com.management.airport.Entity.Airplane;
 import com.management.airport.Entity.Flight;
 import com.management.airport.Repository.FlightRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,8 +40,6 @@ public class FlightService {
     public String showFlightIdHasHighestDistance(){
         return flightRepository.showFlightIdHasHighestDistance();
     }
-    public List<String> showModel(String flightId){
-        return flightRepository.showModel(flightId);
-    }
+
 
 }

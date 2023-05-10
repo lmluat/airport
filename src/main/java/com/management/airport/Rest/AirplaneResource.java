@@ -41,4 +41,9 @@ public class AirplaneResource implements AirplaneAPI{
     public ResponseEntity<Airplane> getAirplaneByModel(String model) {
         return ResponseEntity.ok(airplaneService.getAirplaneByModel(model));
     }
+    @Override
+    public ResponseEntity<List<AirplaneDTO>> showModel(String flightId) {
+        return ResponseEntity.ok(airplaneService.showModel(flightId));
+    }
+
 }

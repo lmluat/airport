@@ -1,5 +1,7 @@
 package com.management.airport.Repository;
 
+import com.management.airport.DTO.AirplaneDTO;
+import com.management.airport.DTO.FlightDTO;
 import com.management.airport.Entity.Airplane;
 import com.management.airport.Entity.Flight;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +17,5 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
     int countNumber(String station);
     @Query(value = "select f2.flight_id from airport.Flight f2 where f2.distance = (select max(f.distance) from airport.Flight f)", nativeQuery = true)
     String showFlightIdHasHighestDistance();
-    @Query(value = "select a.model from airport.Flight f, airport.Airplane a where a.range > f.distance and f.flight_id = ?1", nativeQuery = true)
-    List<String> showModel(String flightId);
+
 }

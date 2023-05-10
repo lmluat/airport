@@ -36,4 +36,7 @@ public class AirplaneService {
     public int countAirplane(String model){
         return airplaneRepository.countAirplane(model);
     }
+    public List<AirplaneDTO> showModel(String flightId){
+        return airplaneRepository.showModel(flightId);
+    }
 }

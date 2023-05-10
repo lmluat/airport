@@ -1,7 +1,9 @@
 package com.management.airport.Rest;
 
+import com.management.airport.DTO.AirplaneDTO;
 import com.management.airport.DTO.EmployeeDTO;
 import com.management.airport.DTO.FlightDTO;
+import com.management.airport.Entity.Airplane;
 import com.management.airport.Entity.Employee;
 import com.management.airport.Entity.Flight;
 import org.springframework.data.repository.query.Param;
@@ -25,6 +27,5 @@ public interface FlightAPI {
     ResponseEntity<Integer> countTotalNumberOfFlightsByDepartureStation(@Param("station") String station);
     @GetMapping("/flights/distance/highest")
     ResponseEntity<String> showFlightIdHasHighestDistance();
-    @GetMapping("/flights/distance/model")
-    ResponseEntity<List<String>> showModel(@Param("flightid") String fligthId);
+
 }
