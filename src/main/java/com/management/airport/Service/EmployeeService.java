@@ -4,6 +4,7 @@ import com.management.airport.DTO.EmployeeDTO;
 import com.management.airport.Entity.Employee;
 import com.management.airport.Repository.EmployeeRepository;
 import com.management.airport.Service.mapper.EmployeeMapper;
+import com.management.airport.exception.Exception;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -28,8 +29,9 @@ public class EmployeeService {
     public Employee getByEmployeeId(Long id){
         return employeeRepository.findByEmployeeId(id);
     }
-    public Optional<Employee> getById(Long id){
-        return employeeRepository.findById(id);
+    public EmployeeDTO getById(Long id){
+        Employee employee = employeeRepository.findById(id).orElseThrow(Exception::EmployeeNotFound);
+        return EmployeeMapper.INSTANCE.toDTO(employee);
     }
     public List<Employee> getByNameAndSalary(String name, String salary){
         return employeeRepository.findByNameAndSalary(name, salary);

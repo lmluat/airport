@@ -30,7 +30,7 @@ public class EmployeeResource implements EmployeeAPI {
     }
 
     @Override
-    public ResponseEntity<Optional<Employee>> getById(Long id) {
+    public ResponseEntity<EmployeeDTO> getById(Long id) {
         return ResponseEntity.ok(employeeService.getById(id));
     }
 

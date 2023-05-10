@@ -19,7 +19,7 @@ public interface EmployeeAPI {
 @GetMapping("/employeeID")
 ResponseEntity<Employee> getByEmployeeId(@Param("id") Long id);
 @GetMapping("/employees/id")
-    ResponseEntity<Optional<Employee>> getById(@Param("id") Long id);
+    ResponseEntity<EmployeeDTO> getById(@Param("id") Long id);
 @GetMapping("/employees/NameAndSalary")
     ResponseEntity<List<Employee>> getByNameAndSalary(@Param("name") String name,
                                                       @Param("salary") String salary);

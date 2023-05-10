@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface FlightRepository extends JpaRepository<Flight, Long> {
+
     @Query("select f from Flight f where f.departureStation = ?1")
     List<Flight> findByDepartureStation(String station);
     @Query("select count(f.id) from Flight f where f.departureStation = ?1")
