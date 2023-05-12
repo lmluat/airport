@@ -9,6 +9,7 @@ import com.management.airport.Repository.AirplaneRepository;
 import com.management.airport.Repository.CertificationRepository;
 import com.management.airport.Repository.EmployeeRepository;
 import com.management.airport.Service.mapper.CertificationMapper;
+import com.management.airport.exception.Exception;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +42,11 @@ public class CertificationService {
         return certificationRepository.save(certification);
     }
     public List<Certification> getByAirplaneId(Long id){
-        return certificationRepository.findByAirplaneId(id);
+          List<Certification> list = certificationRepository.findByAirplaneId(id);
+          if(list.isEmpty()){
+              throw Exception.CertificatoinNotFound();
+          }
+        return list;
     }
     public List<Certification> getByEmployeeId(Long id){
         return certificationRepository.findByEmployeeId(id);

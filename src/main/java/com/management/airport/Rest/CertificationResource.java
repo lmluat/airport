@@ -7,6 +7,7 @@ import com.management.airport.Entity.Certification;
 import com.management.airport.Entity.Employee;
 import com.management.airport.Repository.CertificationRepository;
 import com.management.airport.Service.CertificationService;
+import com.management.airport.exception.Exception;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +28,9 @@ public class CertificationResource implements CerficationAPI {
 
     @Override
     public ResponseEntity<List<Certification>> getByAirplaneId(Long id) {
+        if(id.toString().isBlank() || id.toString().isEmpty()){
+            throw Exception.CertificationBadRequest();
+        }
         return ResponseEntity.ok(certificationService.getByAirplaneId(id));
     }
 

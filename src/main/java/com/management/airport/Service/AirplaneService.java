@@ -4,6 +4,7 @@ import com.management.airport.DTO.AirplaneDTO;
 import com.management.airport.Entity.Airplane;
 import com.management.airport.Repository.AirplaneRepository;
 import com.management.airport.Service.mapper.AirplaneMapper;
+import com.management.airport.exception.Exception;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -25,9 +26,14 @@ public class AirplaneService {
         return airplaneRepository.save(airplane);
     }
     public List<Airplane> getByModel(String model){
-        return airplaneRepository.likeModel(model);
+        List<Airplane> list = airplaneRepository.likeModel(model);
+        if(list.isEmpty()){
+            throw Exception.AirplaneNotFound();
+        }
+        return list;
     }
     public Airplane getAirplaneByModel(String model){
+
         return airplaneRepository.findByModel(model);
     }
     public List<Airplane> getByRangeMoreThan(int range){

@@ -5,6 +5,7 @@ import com.management.airport.DTO.FlightDTO;
 import com.management.airport.Entity.Airplane;
 import com.management.airport.Entity.Flight;
 import com.management.airport.Repository.FlightRepository;
+import com.management.airport.exception.Exception;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +33,11 @@ public class FlightService {
         return flightRepository.save(flight);
     }
     public List<Flight> getByDepartureStation(String station){
-        return flightRepository.findByDepartureStation(station);
+        List<Flight> list = flightRepository.findByDepartureStation(station);
+        if(list.isEmpty()){
+            throw Exception.FlightNotFound();
+        }
+        return list;
     }
     public int countTotalNumberOfFlightsByDepartureStation(String station){
         return flightRepository.countNumber(station);

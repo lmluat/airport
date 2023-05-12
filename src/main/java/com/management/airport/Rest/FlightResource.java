@@ -5,6 +5,7 @@ import com.management.airport.DTO.FlightDTO;
 import com.management.airport.Entity.Airplane;
 import com.management.airport.Entity.Flight;
 import com.management.airport.Service.FlightService;
+import com.management.airport.exception.Exception;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +28,9 @@ public class FlightResource implements FlightAPI{
 
     @Override
     public ResponseEntity<List<Flight>> getByDepartureStation(String station) {
+        if(station.isEmpty() || station.isBlank()){
+            throw Exception.FlightBadRequest();
+        }
         return ResponseEntity.ok(flightService.getByDepartureStation(station));
     }
 

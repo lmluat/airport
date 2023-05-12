@@ -3,6 +3,7 @@ package com.management.airport.Rest;
 import com.management.airport.DTO.AirplaneDTO;
 import com.management.airport.Entity.Airplane;
 import com.management.airport.Service.AirplaneService;
+import com.management.airport.exception.Exception;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,9 @@ public class AirplaneResource implements AirplaneAPI{
 
     @Override
     public ResponseEntity<List<Airplane>> getByModel(String model) {
+        if(model.isBlank()||model.isEmpty()){
+            throw Exception.AirplaneBadRequest();
+        }
         return ResponseEntity.ok(airplaneService.getByModel(model));
     }
 

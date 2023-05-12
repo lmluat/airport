@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotBlank;
 import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.Optional;
@@ -17,9 +18,9 @@ public interface EmployeeAPI {
 @PostMapping("/employees/id")
     ResponseEntity<Employee> createEmployee(@RequestBody EmployeeDTO employeeDTO);
 @GetMapping("/employeeID")
-ResponseEntity<Employee> getByEmployeeId(@Param("id") Long id);
+ResponseEntity<Employee> getByEmployeeId(@RequestParam("id") @NotBlank Long id);
 @GetMapping("/employees/id")
-    ResponseEntity<EmployeeDTO> getById(@Param("id") Long id);
+    ResponseEntity<EmployeeDTO> getById(@RequestParam("id") @NotBlank Long id);
 @GetMapping("/employees/NameAndSalary")
     ResponseEntity<List<Employee>> getByNameAndSalary(@Param("name") String name,
                                                       @Param("salary") String salary);

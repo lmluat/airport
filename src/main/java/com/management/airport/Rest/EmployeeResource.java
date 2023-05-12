@@ -3,8 +3,11 @@ package com.management.airport.Rest;
 import com.management.airport.DTO.EmployeeDTO;
 import com.management.airport.Entity.Employee;
 import com.management.airport.Service.EmployeeService;
+import com.management.airport.exception.Exception;
+import com.management.airport.exception.RestExceptionHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -25,8 +28,12 @@ public class EmployeeResource implements EmployeeAPI {
     }
 
     @Override
-    public ResponseEntity<Employee> getByEmployeeId(Long id) {
-        return ResponseEntity.ok(employeeService.getByEmployeeId(id));
+    public ResponseEntity<Employee> getByEmployeeId(Long id)  {
+        Employee employee =  employeeService.getByEmployeeId(id);
+        if(employee == null){
+            throw Exception.EmployeeNotFound();
+        }
+        return ResponseEntity.ok(employee);
     }
 
     @Override
@@ -46,6 +53,9 @@ public class EmployeeResource implements EmployeeAPI {
 
     @Override
     public ResponseEntity<List<EmployeeDTO>> getEmployeeByName(String name) {
+        if(name.isBlank()){
+            throw Exception.EmployeeNotFound();
+        }
         return ResponseEntity.ok(employeeService.getByName(name));
     }
 
